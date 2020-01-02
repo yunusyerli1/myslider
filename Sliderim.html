@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Project: Interactive slideshow</title>
+        <style>
+button {
+    width:200px;
+  padding: 5px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  
+  
+}
+
+button:hover {background-color: #3e8e41;}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px); }
+
+ #previous{
+     position: absolute;
+     top:320px;
+     
+ }
+ #next{
+     position: absolute;
+     left: 230px;
+     top:320px;
+ }
+  
+        </style>
+    </head>
+    <body>
+    
+    <img id ="mushroom" src="https://www.kasandbox.org/programming-images/food/mushroom.png" width="400" alt="Mushrooms" title="Mushrooms">
+    <img id ="snake" src="https://upload.wikimedia.org/wikipedia/commons/4/40/Chrysopelea_taprobanica.jpg" width="400" alt="snake" title="Snake">
+    <img id ="bird" src="https://www.kasandbox.org/programming-images/animals/birds_rainbow-lorakeets.png" width="400" alt="bird" title="bird">
+    <img id ="cat" src="https://www.kasandbox.org/programming-images/animals/cat.png" width="400" alt="cat" title="cat">
+    <img id ="butterfly" src="https://www.kasandbox.org/programming-images/animals/butterfly.png" width="400" alt="butterfly" title="butterfly">
+    
+    <br>
+    
+    <button type="button" id="previous">Previous </button>
+    <button type="button" id="next">Next </button>
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+     var counter=0;
+     
+     var imgs=["#mushroom", "#snake","#bird","#cat","#butterfly"];
+     for(var i=0;i<imgs.length;i++){
+         $(imgs[i+1]).hide();
+     }
+    
+     $("#next").on("click",function(event){
+         
+         if(counter < imgs.length ) {
+             $(imgs[counter]).hide();
+             $(imgs[counter+1]).show();
+             counter++;
+             
+        } 
+   
+         if(counter === imgs.length) {
+             counter = 0
+             $(imgs[counter]).show();
+        } 
+    });
+    
+    $("#previous").on("click",function(event){
+        
+         if(counter>0 ) {
+             $(imgs[counter]).hide();
+             $(imgs[counter-1]).show();
+             counter--;
+             
+        } 
+         else{
+             $(imgs[counter]).hide();
+             $(imgs[imgs.length-1]).show();
+             counter=imgs.length-1;
+         }
+    });
+
+
+    </script> 
+    
+    </body>
+</html>
